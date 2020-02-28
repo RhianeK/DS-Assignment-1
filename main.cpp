@@ -8,13 +8,14 @@ using namespace std;
 // test the cstudent class
 void TestStudent()
 {
-    CStudent("Harry",165)
+    CStudent("Harry",165);
+
 }
 
 // test the cstudent class
 void TestCourse()
 {
-    
+    CCourse()
 }
 
 // main fucntion to test the depart functionnalities

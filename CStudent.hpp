@@ -21,7 +21,7 @@
  public:
      // --- add getters and setters here
  	void setCourseGrades(int ci, int* scores); 
- 	void setExamGrade()
+ 	void setExamGrade();
      
  public:
      // --- add grades methods here

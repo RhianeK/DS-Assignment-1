@@ -7,6 +7,11 @@ class CStudent ;
 class CCourse {
 private:
     // --- add attributes here
+    char* name;
+    int code;
+    int capacity;
+    int *enrolled;
+    int nbEnrolled;
     
 public:
     // --- add constr, distructor, memory management methods here

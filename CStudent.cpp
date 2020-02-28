@@ -14,7 +14,7 @@ CStudent::CStudent(char* vname, int vid)
 	grades = new int*[maxCourses]; //Create an Array of maxCourses Pointers (each pointer will point to 1 Row of 2D Array)
 	for(int i=0; i<maxCourses; i++)
 		grades[i] = new int[NBEXAMS]; //NBEXAMS number of cols in each row
-
+	int nbCourses = 0;
 }
 
 CStudent::~CStudent()
