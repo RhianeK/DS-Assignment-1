@@ -26,6 +26,7 @@ public:
 	void displayInfo();
   	CStudent* getStudent(int ind);
   	void findBestStudent();
+  	int getnbEnrolled();
 public:
     // --- add othe methods here
     float* calcAverages();

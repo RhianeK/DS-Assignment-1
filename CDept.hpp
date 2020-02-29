@@ -15,8 +15,8 @@ private: // You should not add any attribute
 private: // private functions called by the constructor
     void createStudents() ;
     void createCourses() ;
-    void createDefaultGrades() ;
     void enrollStudentsInCourses() ;
+    void createDefaultGrades() ;
 
 public:
     CDept() ;
@@ -37,6 +37,8 @@ public: // DO NOT TOUCH THE ABOVE CODE
     void coursesofStudent(CStudent* ps);
     void bestStudentInCourse(CCourse* pc);
     CStudent* findBestinDept();
+    int getTotalCourses();
+    int getTotalStudents();
 
 
 } ;

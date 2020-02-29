@@ -27,6 +27,7 @@ class CCourse;
  	void enroll(CCourse *c);
  	void displayCourses();
   	void displayInfo();
+  	int getnbCourses();
  public:
      // --- add grades methods here
  	void setExamGrade(int ci, int ei, int score);

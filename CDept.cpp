@@ -7,6 +7,7 @@
 #include "CDept.hpp"
 #include "CCourse.hpp"
 #include "CStudent.hpp"
+using namespace std;
 
 CDept::CDept()
 {
@@ -16,8 +17,8 @@ CDept::CDept()
     nbCourses = 0;
     createStudents() ;
     createCourses() ;
-    createDefaultGrades() ;
     enrollStudentsInCourses() ;
+    createDefaultGrades() ;
 }
 
 CDept::~CDept() {
@@ -26,17 +27,22 @@ CDept::~CDept() {
     delete [] courses;
 }
 
+//getter for a student from the array students
 CStudent* CDept::getStudent(int index)
 {
-    // -- do it here --
-
-    return NULL ; //Added to avoid compiler error. Replace it with the right return statement
+    if(index>=0 && index < nbStudents){
+        return students[index];
+    }
+    return NULL ; 
 }
 
+//getter for a course from the array courses
 CCourse* CDept::getCourse(int index)
 {
-    // -- do it here --
-    return NULL ; //Added to avoid compiler error. Replace it with the right return statement
+    if(index>=0 && index < nbCourses){
+        return courses[index];
+    }
+    return NULL ; 
 }
 
 void CDept::createStudents() {
@@ -61,52 +67,60 @@ void CDept::createCourses() {
     }
 }
 
+//enrolls random nos of students in random courses
 void CDept::enrollStudentsInCourses()
 {
+  srand((unsigned int)time(0));
+  bool a;
   for(int s=0; s<nbStudents; s++)
   {
     CStudent* st = students[s];
-    srand((unsigned int)time(0));
     for(int nbc=0; nbc<rand()%st->maxCourses; nbc++)
     {
       do{
-        srand((unsigned int)time(0));
-        enroll(st, courses[rand()%nbCourses]);
-      }while(!enroll(st, courses[rand()%nbCourses]));
+        a = enroll(st, courses[rand()%nbCourses]);
+      }while(!a);
     }
   }
 }
 
+//gives the students random grades
 void CDept::createDefaultGrades()
 {
   // Use current time as seed for random generator
-  for(int s=0; s<nbStudents; s++){
-    CStudent* st = students[s];
+    srand((unsigned int)time(0));
+    for(int s=0; s<nbStudents; s++){
+        
+        CStudent* st = students[s];
         for(int c=0; c<st->nbCourses;c++){
-      for(int i=0; i<NBEXAMS; i++){
-        srand((unsigned int)time(0));
-        st->grades[c][i] = rand()%101;
-      }
+            for(int i=0; i<NBEXAMS; i++){
+                st->grades[c][i] = rand()%101;
+            }
+        }
     }
-  }
 }
 
+//adds a student to the array of students in the department
 bool CDept::addStudent(char* n, int c) {
   if(nbStudents<MAXNBST){
     students[nbStudents] = new CStudent(n, c);
+    nbStudents++;
     return true;
   }
   return false ;
 }
 
+//adds a course to the array of courses in the dept
 bool CDept::addCourse(char* n, int c) {
   if(nbCourses<MAXNBCR){
     courses[nbCourses] = new CCourse(n, c);
+    nbCourses++;
     return true;
   }
   return false ;
 }
 
+//enrolls specified student in specified course
 bool CDept::enroll(CStudent* ps, CCourse* pc) {
     // -- do it here --
     if(ps->maxCourses > ps->nbCourses && pc->capacity > pc->nbEnrolled && !ps->alreadyEnrolled(pc))
@@ -118,21 +132,24 @@ bool CDept::enroll(CStudent* ps, CCourse* pc) {
     return false ; //or return false
 }
 
+//displays info of all students in the department
 void CDept::displayStudents() {
 
-  for(int s=0; s>nbStudents; s++){
+  for(int s=0; s<nbStudents; s++){
     students[s]->displayInfo();
   }
 }
 
+//displays info of all courses in the department
 void CDept::displayCourses() {
-  for(int c=0; c>nbCourses; c++){
+  for(int c=0; c<nbCourses; c++){
     courses[c]->displayInfo();
   }
 }
 
+//receives an array of grades which are assigned to the grades 2D array of the student under that course
 void CDept::enterStudentGrades(CStudent* ps, CCourse* pc, int* gr) {
-    if (ps->alreadyEnrolled(pc)){
+    if (ps->alreadyEnrolled(pc)){ //to check if the student is enrolled in soecified course
         int i = ps->getCourseIndex(pc->code);
         for(int g=0; g<NBEXAMS; g++){
             ps->grades[i][g] = gr[g];
@@ -140,16 +157,20 @@ void CDept::enterStudentGrades(CStudent* ps, CCourse* pc, int* gr) {
     }
 }
 
+//displays the specified studet's courses
 void CDept::coursesofStudent(CStudent* ps){
     ps->displayCourses();
 }
 
+//finds the best student in the specified course
 void CDept::bestStudentInCourse(CCourse* pc){
     pc->findBestStudent();
 }
+
+//finds best student in the whole department
 CStudent* CDept::findBestinDept(){
   float max = 0;
-  int ind;
+  int ind=-1;
   for(int s=0; s<nbStudents; s++){
     CStudent* st = students[s];
     if (st->nbCourses >= 3){
@@ -166,5 +187,17 @@ CStudent* CDept::findBestinDept(){
       }
     }
   }
-  return students[ind];
+  if(ind>=0){
+    return students[ind];}
+  return NULL;
+}
+
+//getter for private attribute nbCourses
+int CDept::getTotalCourses(){
+    return nbCourses;
+}
+
+//getter for private attribute nbStudents
+int CDept::getTotalStudents(){
+    return nbStudents;
 }
