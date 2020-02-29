@@ -11,30 +11,33 @@ private: // You should not add any attribute
     int nbStudents ;
     CCourse**  courses ;
     int nbCourses ;
-    
+
 private: // private functions called by the constructor
     void createStudents() ;
     void createCourses() ;
     void createDefaultGrades() ;
     void enrollStudentsInCourses() ;
-    
+
 public:
     CDept() ;
     ~CDept() ;
-    
+
     CStudent* getStudent(int index) ;
     CCourse* getCourse(int index) ;
-    
-    bool addStudent() ;
-    bool addCourse() ;
-    void enterStudentGrades(CStudent* ps, CCourse* pc) ;
+
+    bool addStudent(char* n, int c) ;
+    bool addCourse(char* n, int c) ;
+    void enterStudentGrades(CStudent* ps, CCourse* pc, int* gr) ;
 
     bool enroll(CStudent* ps, CCourse* pc) ;
     void displayStudents() ;
     void displayCourses() ;
-    
+
 public: // DO NOT TOUCH THE ABOVE CODE
-        // Add other other functions below as needed
+        void coursesofStudent(CStudent* ps);
+        void bestStudentInCourse(CCourse* pc);
+        CStudent* findBestinDept();
+
 
 } ;
 #endif /* CDept2_hpp */
