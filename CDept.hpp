@@ -34,9 +34,9 @@ public:
     void displayCourses() ;
 
 public: // DO NOT TOUCH THE ABOVE CODE
-        void coursesofStudent(CStudent* ps);
-        void bestStudentInCourse(CCourse* pc);
-        CStudent* findBestinDept();
+    void coursesofStudent(CStudent* ps);
+    void bestStudentInCourse(CCourse* pc);
+    CStudent* findBestinDept();
 
 
 } ;

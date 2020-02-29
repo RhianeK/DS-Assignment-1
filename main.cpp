@@ -8,15 +8,21 @@ using namespace std;
 // test the cstudent class
 void TestStudent()
 {
+    
 }
 
-// test the cstudent class
+// test the ccourse class
 void TestCourse()
 {
+    cout<<"1";
+    CStudent person((char*)"Harry",169);
+    cout<<"2";
+    CCourse cs((char*)"Algo", 256);
+    cout<<"3";
+    cs.enroll(&person);
+    
 
-}
-
-// main fucntion to test the depart functionnalities
+// main function to test the depart functionalities
 int main(int argc, const char * argv[])
 {
     // Test the CStudent class
@@ -26,14 +32,18 @@ int main(int argc, const char * argv[])
     TestCourse() ;
 
     // Create one dept with some default courses and students
-    // Then display all the students and all the courses
-        //---- do it here ----
+    // CDept CSDepartment;
+
+    // // Then display all the students and all the courses
+    // CSDepartment.displayStudents();
+    // CSDepartment.displayCourses();
 
     // Display the courses taken by a student with index 2
         //---- do it here ----
 
     // Find the best student in a particular course
-    // Dispaly the student info and his/her Total average score
+
+    // Display the student info and his/her Total average score
         //---- do it here ----
 
     // Create one dept with some default courses and students

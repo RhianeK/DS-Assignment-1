@@ -12,15 +12,15 @@ CCourse::CCourse(char* vname, int vcode)
 {
   name = vname;
 	code = vcode; // --- add constructor definition here
-	int capacity = MAXSTCR;
-	int *enrolled = new int[capacity]; //the array enrolled is the size of max capacity
-	int nbEnrolled = 0;
+	capacity = MAXSTCR;
+	enrolled = new CStudent*[capacity]; //the array enrolled is the size of max capacity
+	nbEnrolled = 0;
   // --- add constructor definition here
 }
 
 CCourse::~CCourse()
 {
-    // --- add destructor definition here
+// --- add destructor definition here
 }
 
 void CCourse::displayInfo() //takes an object of itself as an argument
@@ -36,15 +36,15 @@ void CCourse::enroll(CStudent* s)
 {
   if(nbEnrolled<capacity)
   {
-		enrolled[nbEnrolled] = s;
+	enrolled[nbEnrolled] = s;
     nbEnrolled++;
 	}
 }
 void CCourse::displayStudents()
 {
-	for(int i=0; i<nbEnrolled; i++){
-    enrolled[i]->displayInfo();
-  }
+	if (nbEnrolled > 0){
+		for(int i=0; i<nbEnrolled; i++)
+    		enrolled[i]->displayInfo();}
 
 }
 

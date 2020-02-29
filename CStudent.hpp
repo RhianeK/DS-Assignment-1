@@ -15,7 +15,7 @@ class CCourse;
  	int nbCourses;
  	int** grades; //double pointer to dynamic 2D array. courses have NBEXAMS exams. so NBEXAMS cols and maxCourses rows
  	friend class CCourse;
-  friend class CDept;
+  	friend class CDept;
 
  public: //Memory management methods
      // --- constr, desctructor add Memory management methods here
@@ -26,16 +26,16 @@ class CCourse;
      // --- add getters and setters here
  	void enroll(CCourse *c);
  	void displayCourses();
-  void displayInfo();
+  	void displayInfo();
  public:
      // --- add grades methods here
  	void setExamGrade(int ci, int ei, int score);
-  void setCourseGrades(int ci, int* scores);
+  	void setCourseGrades(int ci, int* scores);
  public:
      // --- add other methods here
 	float* calcAverages();
-  int getCourseIndex(int icode);
-  bool alreadyEnrolled(CCourse* pc);
+  	int getCourseIndex(int icode);
+  	bool alreadyEnrolled(CCourse* pc);
 
 
 

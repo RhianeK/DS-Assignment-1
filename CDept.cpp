@@ -82,7 +82,7 @@ void CDept::createDefaultGrades()
   // Use current time as seed for random generator
   for(int s=0; s<nbStudents; s++){
     CStudent* st = students[s];
-		for(int c=0; c<st->nbCourses;c++){
+        for(int c=0; c<st->nbCourses;c++){
       for(int i=0; i<NBEXAMS; i++){
         srand((unsigned int)time(0));
         st->grades[c][i] = rand()%101;

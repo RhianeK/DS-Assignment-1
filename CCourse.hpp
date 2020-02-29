@@ -23,7 +23,7 @@ public:
     // --- add getters and setters here
     void enroll(CStudent* s);
   	void displayStudents();
-		void displayInfo();
+	void displayInfo();
   	CStudent* getStudent(int ind);
   	void findBestStudent();
 public:

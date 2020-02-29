@@ -37,15 +37,15 @@ void CStudent::enroll(CCourse* c) //receives pointer to a course
 
 void CStudent::displayCourses()
 {
+	if(nbCourses>0){
 	for(int i=0; i<nbCourses; i++)
-		courses[i]->CCourse::displayInfo();
+		courses[i]->CCourse::displayInfo();}
 }
 
 void CStudent::displayInfo()
 {
 	cout<<"Name: "<<this->name<<endl;
 	cout<<"ID: "<<this->id<<endl;
-  this->displayCourses();
 }
 
 void CStudent::setExamGrade(int ci, int ei, int score)
